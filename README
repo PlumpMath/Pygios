@@ -1,0 +1,146 @@
+
+
+
+# Ok, warning, and critical values as Decimals.
+
+
+CheckProcessMemoryUsage(ok, warning, critical, user=None)
+# Check RSS of all running processes for processes using too much RAM.
+# If user is None, check everyone, otherwise only check processes owned by the given user or users (if an iterable is passed in).
+
+
+CheckINIConfiguration(ok, warning, critical, file, section, key, value)
+# If ok, warning, and critical are numeric, the INI value will be coerced into a comparable type.
+# Conversion failure is treated as critical.
+
+
+CheckFilesystemUsage(ok, warning, critical, label=None, device=None, mount=None)
+# One of, and only one of label, device, or mount must be supplied.
+# Ok, warning, and critical levels are Decimal percentages.
+
+
+CheckSMARTStatus(device=None)
+# Check the HDD SMART status for all (None) or the given device.
+# Any error is critical, unable to check is a warning.
+
+
+CheckCommandStatus(ok, warning, critical, command)
+# Execute command within a shell environment and compare the exit status.
+# Ok, warning, and critical may be iterable.
+
+
+CheckCommandOutput(ok, warning, critical, command)
+# Execute command within a shell environment and compare STDOUT.
+# Ok, warning, and critical may or may not be an iterable returning strings, regular expressions, or they can be callback functions.
+
+
+CheckMemoryUsage(ok, warning, critical)
+# Check to the amount of free memory (not including buffers or cache).
+# Ok, warning, and critical may be integers (bytes), or Decimal percentage values.
+# Uses proc if available, otherwise tries to parse the result of the `free` command.
+
+
+CheckSwapUsage(ok, warning, critical)
+
+
+# Monitor using /proc file descriptors.
+
+CheckNetworkInterfaceStatus(interface=None)
+# Determine if a network interface is usable.  If no interface is given, check them all.
+
+
+CheckNetworkInterfacePacketRate(ok, warning, critical, interface=None)
+
+
+CheckNetworkInterfaceIP(ok, warning, critical, interface)
+# Check to see if the given network interface has an address other than expected.
+# Ok, warning, and critical values may or may not be iterables returning strings, regular expressions, or callback functions.
+
+
+CheckNetworkInterfaceTraffic(ok, warning, critical, interface, kind=enum('tx', 'rx'))
+# Check bytes per second throughput on the given network interface.
+
+
+CheckNetworkConnections(ok, warning, critical, port=None)
+# Check the number of open network connections.
+# Port may be None (report all), a single integer, or an iterable returning integers.
+
+
+CheckNetworkPort(kind=enum('tcp', 'udp'), port)
+# Check that one or more ports are being listened to.
+
+
+
+CheckHostLatency(ok, warning, critical, host, interface=None)
+CheckHostJitter()  # standard deviation check
+CheckHostPacketLoss()
+# Ping the given host.  Levels are milliseconds as Decimal values.
+# If interface is specified, route ICMP packets using the given interface only.
+
+
+CheckHostHops()
+# Traceroute
+
+
+
+
+
+CheckGLSA()
+# Check for Gentoo Linux Security Advisories.
+# Any vulnerabilities is critical, unable to check is a warning.
+# 
+
+
+CheckPortageUpdates()
+# emerge -uDN -p world | grep \\[ | wc -l
+# > 0 = warning
+
+
+CheckClamAV(ok, warning, critical)
+# Check the age (in revisions) your ClamAV virus definitions lag behind current.
+# DNS TXT query against current.cvd.clamav.net -- e.g. "0.95.2:51:9759:1251633627:1:43:8055"
+
+
+CheckRBL(host, blacklist=None)
+# Check if a given host has been black-listed on any of the common public RBLs, or the specific one given.
+# Warning if unable to check.
+
+
+
+
+CheckFolderContents(ok, warning, critical, path)
+# Check for the given file(s) (string or Path objects) or for a count of the folder contents.
+
+
+
+CheckFileAge(ok, warning, critical, path, recursive=False, kind=enum('oldest', 'newest'), date=enum('modify', 'create', 'access'))
+# Check file(s) identified by or contained within the given path (file reference / folder reference), optionally recursively, for freshness.
+# Levels are timedeltas.  Defaults to the newest file, if multiple or directory specified.
+
+
+
+CheckUsers(ok, warning, critical, user=None)
+# Check the number of logged-in users if user=None, otherwise check to see if the given user or users are logged in.
+
+
+
+
+
+CheckPO3Account()
+CheckIMAPAccount()
+CheckSMTPAccount()
+
+CheckIMAPQuota()
+
+
+CheckApache2Status()
+
+
+CheckHTTPRequest() # Check a URL for a given status code or substring/regular expression in the returned content.
+
+
+CheckPHPSessions() # Check the number of active PHP session files from the folder defined in PHP.ini.
+# On startup, run a PHP snippit to echo the session path.
+
+
+q
