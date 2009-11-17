@@ -1,4 +1,11 @@
+To install, run `easy_install Pygios` or `pip install Pygios`.
 
+To use, download pygios.py and sample.ini, then customize to suit your application and notification requirements.
+
+
+
+
+The following are partially complete or ideas for future check routines.
 
 
 # Ok, warning, and critical values as Decimals.
