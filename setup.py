@@ -6,6 +6,8 @@ setup(
       description = "A light-weight server monitoring system.",
       author = "Alice Bevan-McGregor",
       author_email = "alice@gothcandy.com",
+      url = "http://github.com/GothAlice/Pygios",
+      download_url = "http://pypi.python.org/pypi/Pygios",
       license = "MIT",
       packages = find_packages(exclude=['tests']),
       include_package_data = False,
